@@ -1,0 +1,24 @@
+#define		SPROGRAM	1
+#define		SIDENTIFICADOR	16
+#define		SPONTOEVIRGULA	2
+#define		SVAR		3
+#define		SDOISPONTOS	4
+#define		SREAL		5
+#define		SINTEGER	6
+#define		SBOOLEAN	7
+#define			SABREPAR	8
+#define			SFECHAPAR	9
+#define			SATRIBUICAO	10
+#define			SVIRGULA	11
+#define			SBEGIN	12
+#define			SREAD	13
+#define			SWRITE	14
+#define			SIF	15
+#define			STHEN	17
+#define			SELSE	18
+#define			SINTEIRO	19
+#define			SMAIORQUE	20
+#define			SPONTO	21
+#define			SMAIS	22
+#define			SDIVI	23
+
