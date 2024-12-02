@@ -21,11 +21,11 @@ testa:
 	@echo
 	./pascal.exe prog1.pas
 	@echo
-	@echo '*** TESTANDO: programa 1 ***'
+	@echo '*** TESTANDO: programa 2 ***'
 	@echo
 	./pascal.exe prog2.pas
 	@echo
-	@echo '*** TESTANDO: programa 1 ***'
+	@echo '*** TESTANDO: programa 3 ***'
 	@echo
 	./pascal.exe prog3.pas
 
