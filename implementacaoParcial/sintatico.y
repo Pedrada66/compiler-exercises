@@ -13,23 +13,31 @@ void yyerror(const char *msg);
 
 %token 	S_ID
 %token	S_NUMERO
-%token    S_PROGRAM
+%token  S_PROGRAM
 %token 	S_PONTO
 %token	S_PONTOVG
-%token    S_VIRGULA
-%token    S_DOISPONTOS
+%token  S_VIRGULA
+%token  S_DOISPONTOS
 %token	S_BEGIN
 %token	S_END
 %token 	S_VAR
 %token	S_IF
 %token	S_THEN
 %token	S_ELSE
+%token	S_REPEAT
+%token	S_UNTIL
+%token	S_WHILE
+%token	S_DO
 %token	S_ATRIB
 %token	S_MAIS
 %token 	S_MENOS
 %token	S_VEZES
 %token 	S_DIVI
 %token	S_MAIORQUE
+%token	S_MENORQUE
+%token	S_IGUAL
+%token	S_AND
+%token	S_OR
 %token	S_ABREPAR
 %token 	S_FECHAPAR
 
@@ -38,13 +46,13 @@ void yyerror(const char *msg);
  | produções sintáticas da linguagem Pascal Simples
  +--------------------------------------------------*/
 
-programa
-	:S_PROGRAM S_ID S_PONTOVG S_VAR variaveis corpo S_PONTO
+programa:
+	S_PROGRAM S_ID S_PONTOVG S_VAR variaveis corpo S_PONTO
 ;
 
 
 variaveis:
-	 variaveis  listaDeIdentificadores S_DOISPONTOS S_ID  S_PONTOVG
+	variaveis  listaDeIdentificadores S_DOISPONTOS S_ID  S_PONTOVG
 	| listaDeIdentificadores S_DOISPONTOS S_ID S_PONTOVG 
 ;
 
@@ -53,23 +61,23 @@ listaDeIdentificadores:
 	| S_ID
 ;
 
-corpo
-	: S_BEGIN seq_comandos S_END
+corpo: 
+	S_BEGIN seq_comandos S_END
 ;
 
-seq_comandos
-	:seq_comandos S_PONTOVG comando 
+seq_comandos:
+	seq_comandos S_PONTOVG comando 
 	|comando
 ;
-comando
-	:atribuicao
+comando:
+	atribuicao
 	|instIF 
 	/* instWhile */
 	/* instRepeat */	
 	| /* vazio */
 	;
-atribuicao
-	:S_ID S_ATRIB expressaoL  
+atribuicao:
+	S_ID S_ATRIB expressaoL  
 ;
 
 instIF:
@@ -82,17 +90,18 @@ alternativa:
 ;
 
 /* Modifique aqui */
-expressaoL: expressaoR
+expressaoL: 
+	expressaoR
 ;
 
-expressaoR :
+expressaoR:
 	expressaoR S_MAIORQUE expressao 
 	| expressao
 ;
 	
 
-expressao
-	: expressao S_MAIS termo 
+expressao: 
+	expressao S_MAIS termo 
 	| expressao S_MENOS termo 
 	| termo; 
 ;
@@ -132,7 +141,6 @@ int main(int argc, char **argv){
 	}
 	fclose(yyin);
 }
-
 
 
 
