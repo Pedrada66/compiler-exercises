@@ -17,6 +17,10 @@ var			{return S_VAR;}
 if			{return S_IF;}
 then			{return S_THEN;}
 else			{return S_ELSE;}
+repeat			{return S_REPEAT;}
+until			{return S_UNTIL;}
+while			{return S_WHILE;}
+do			{return S_DO;}
 "."			{return S_PONTO;}
 ";"			{return S_PONTOVG;}
 ","			{return S_VIRGULA;}
@@ -27,6 +31,10 @@ else			{return S_ELSE;}
 "*"			{return S_VEZES;}
 "/"			{return S_DIVI;}
 ">"			{return S_MAIORQUE;}
+"<"			{return S_MENORQUE;}
+"="			{return S_IGUAL;}
+"AND"			{return S_AND;}
+"OR"			{return S_OR;}
 "("			{return S_ABREPAR;}
 ")"			{return S_FECHAPAR;}
 [ \t]			/* ignora */
