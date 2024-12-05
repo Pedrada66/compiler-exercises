@@ -72,10 +72,10 @@ seq_comandos:
 comando:
 	atribuicao
 	|instIF 
-	/* instWhile */
-	/* instRepeat */	
+	|instWhile
+	|instRepeat
 	| /* vazio */
-	;
+;
 atribuicao:
 	S_ID S_ATRIB expressaoL  
 ;
@@ -90,12 +90,22 @@ alternativa:
 ;
 
 /* Modifique aqui */
+instRepeat:
+      S_REPEAT seq_comandos S_UNTIL expressaoL
+;
+instWhile:
+	S_WHILE expressaoL S_DO comando
+;
 expressaoL: 
+	expressaoL S_OR expressaoL
+    	| expressaoL S_AND expressaoL
 	expressaoR
 ;
 
 expressaoR:
 	expressaoR S_MAIORQUE expressao 
+	| expressao S_MENORQUE expressao
+    	| expressao S_IGUAL expressao
 	| expressao
 ;
 	
@@ -113,7 +123,7 @@ termo:
 ;
 
 fator: 
-	S_ABREPAR expressao S_FECHAPAR
+	S_ABREPAR expressaoL S_FECHAPAR
 	| S_ID 
 	| S_NUMERO 
 ;
